@@ -12,6 +12,8 @@ import static org.junit.Assert.*;
 
 import com.example.core.Foo;
 
+import scala.jdk.javaapi.OptionConverters;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -29,6 +31,11 @@ public class ExampleInstrumentedTest {
     @Test
     public void integer_fromScalaCore() {
         assertEquals(42, Foo.bar());
+    }
+
+    @Test
+    public void converted_option_fromScalaCore() {
+        assertEquals(42, OptionConverters.toJava(Foo.option()).get());
     }
 
 }

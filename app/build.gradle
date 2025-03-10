@@ -31,6 +31,7 @@ android {
 dependencies {
 
     implementation project(":core")
+    implementation libs.scala3.library.x
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout

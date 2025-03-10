@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.scala_3_android_java.R;
 
 public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
+    private MainViewModel viewModel;
+    private TextView messageTextView;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -36,4 +39,17 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Find the TextView in the layout
+        messageTextView = view.findViewById(R.id.message_text_view);
+
+        // Observe the LiveData from ViewModel
+        mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
+            // Update the UI when data changes
+            messageTextView.setText(message);
+        });
+    }
 }

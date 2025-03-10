@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Scala-3-Android-Java"
 include ':app'
+include ':core'

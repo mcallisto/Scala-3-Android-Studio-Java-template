@@ -1,0 +1,13 @@
+plugins {
+    id 'scala'
+}
+
+dependencies {
+    implementation libs.scala3.library.x
+    testImplementation 'org.scalatest:scalatest_3:3.2.19'
+    testImplementation 'junit:junit:4.13.1'
+}
+
+test {
+    useJUnitPlatform()
+}

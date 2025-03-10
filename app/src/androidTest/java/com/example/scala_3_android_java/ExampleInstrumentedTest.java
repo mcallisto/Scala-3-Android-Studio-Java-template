@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import com.example.core.Foo;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -23,4 +25,10 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.scala_3_android_java", appContext.getPackageName());
     }
+
+    @Test
+    public void integer_fromScalaCore() {
+        assertEquals(42, Foo.bar());
+    }
+
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.core.Foo;
 import com.example.scala_3_android_java.R;
 
 public class MainFragment extends Fragment {
@@ -49,7 +50,7 @@ public class MainFragment extends Fragment {
         // Observe the LiveData from ViewModel
         mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
             // Update the UI when data changes
-            messageTextView.setText(message);
+            messageTextView.setText(message + " " + Foo.bar());
         });
     }
 }

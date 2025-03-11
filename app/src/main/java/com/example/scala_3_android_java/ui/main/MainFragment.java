@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.core.Foo;
 import com.example.scala_3_android_java.R;
 
+import cats.effect.IO;
 import scala.jdk.javaapi.OptionConverters;
 
 public class MainFragment extends Fragment {
@@ -52,7 +53,7 @@ public class MainFragment extends Fragment {
         // Observe the LiveData from ViewModel
         mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
             // Update the UI when data changes
-            messageTextView.setText(message + " " + Foo.bar() + " " + OptionConverters.toJava(Foo.option()).get());
+            messageTextView.setText(message + " " + Foo.bar() + " " + OptionConverters.toJava(Foo.option()).get() + " " + IO.pure(42).toString());
         });
     }
 }

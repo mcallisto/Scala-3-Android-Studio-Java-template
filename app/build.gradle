@@ -32,6 +32,7 @@ dependencies {
 
     implementation project(":core")
     implementation libs.scala3.library.x
+    implementation 'org.typelevel:cats-effect_3:3.5.7'
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout

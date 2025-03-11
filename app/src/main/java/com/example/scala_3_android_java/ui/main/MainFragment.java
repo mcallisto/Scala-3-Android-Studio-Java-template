@@ -21,7 +21,6 @@ import scala.jdk.javaapi.OptionConverters;
 public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
-    private MainViewModel viewModel;
     private TextView messageTextView;
 
     public static MainFragment newInstance() {

@@ -5,10 +5,10 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-constraintlayout = "2.1.4"
-lifecycleLivedataKtx = "2.6.1"
-lifecycleViewmodelKtx = "2.6.1"
-scala3Library_x = "3.6.4"
+constraintlayout = "2.2.1"
+lifecycleLivedataKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.7"
+scala3Library_x = "3.7.0-RC1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }

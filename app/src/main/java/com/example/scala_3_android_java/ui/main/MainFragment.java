@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.core.Foo;
@@ -22,6 +24,8 @@ public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
     private TextView messageTextView;
+    private EditText inputEditText;
+    private Button submitButton;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -45,13 +49,34 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Find the TextView in the layout
+        // Find view references
         messageTextView = view.findViewById(R.id.message_text_view);
+        inputEditText = view.findViewById(R.id.input_edit_text);
+        submitButton = view.findViewById(R.id.submit_button);
 
         // Observe the LiveData from ViewModel
         mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
             // Update the UI when data changes
             messageTextView.setText(message + " " + Foo.bar() + " " + OptionConverters.toJava(Foo.option()).get());
         });
+
+        // Set up the button click listener
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the input from the EditText
+                String userInput = inputEditText.getText().toString();
+
+                // Process the input (e.g., display it in the messageTextView)
+                messageTextView.setText("You entered: " + userInput);
+
+                // Clear the EditText (optional)
+                inputEditText.setText("");
+
+                // Here you can send your user input to the ViewModel to update the data
+                // mViewModel.processInput(userInput)
+            }
+        });
+
     }
 }

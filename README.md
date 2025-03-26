@@ -8,9 +8,28 @@ Helping the adoption of Scala in Android Studio.
 
 This is the Java project you get if:
 
-1. in **Android Studio** _Android Studio Meerkat | 2024.3.1_ you create a module with the Fragment + ViewModel template.
-Note: Android Studio is currently quite opinionated towards Kotlin, so this is not an option you get in the `New` > `New Project…` menu.
+1. in **Android Studio** _Android Studio Meerkat | 2024.3.1 Patch 1_ you create a module with the Fragment + ViewModel template.
 
-2. add a minimal "Hello, world!"
+2. you then add a minimal Scala 3.7.0-RC1 module named `core` and call it from the `app` module
 
-3. add a minimal Scala 3.6.4 module named `core` and call it from the `app` module
+3. you use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
+   and display the results. Credits and big thanks for this to [@keynmol](https://github.com/keynmol)
+
+## Notes
+
+### Why Scala 3.7.0-RC1?
+
+Because is the first Scala version shipping https://github.com/scala/scala3/pull/22632.
+The emitted Scala code is more compatible with Android ART.
+
+Since currently all Scala libraries are not yet published to Maven Central with this version,
+the workaround is to let Android R8 minify the code,
+so `minifyEnabled true` must be set even for `debug` builds.
+
+### What about a Kotlin template?
+
+Android Studio is currently quite opinionated towards Kotlin,
+so this Java module is not an option you get in the `New` > `New Project…` menu.
+
+If you want the same project starting from the standard Kotlin template,
+please check https://github.com/mcallisto/Scala-3-Android-Studio-template.

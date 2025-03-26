@@ -2,4 +2,5 @@
     <string name="app_name">App</string>
     <string name="enter_your_text_here">Enter your text here</string>
     <string name="submit">Submit</string>
+    <string name="lookup_on_scaladex">Lookup on Scaladex</string>
 </resources>

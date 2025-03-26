@@ -15,10 +15,9 @@ object Foo:
   val option: Option[Int] = Some(42)
 
   import sttp.client4.okhttp.OkHttpSyncBackend
-
-  val backend = OkHttpSyncBackend()
-
   import sttp.client4.*
+
+  val backend: WebSocketSyncBackend = OkHttpSyncBackend()
 
   def getProjectInfo(org: String, repo: String): Either[String, Description] =
     basicRequest

@@ -51,7 +51,7 @@ public class MainFragment extends Fragment {
 
         // Find view references
         messageTextView = view.findViewById(R.id.message_text_view);
-        inputEditText = view.findViewById(R.id.input_edit_text);
+        inputEditText = view.findViewById(R.id.input_organisation);
         submitButton = view.findViewById(R.id.submit_button);
 
         // Observe the LiveData from ViewModel

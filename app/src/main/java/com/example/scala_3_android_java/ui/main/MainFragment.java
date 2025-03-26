@@ -26,6 +26,7 @@ public class MainFragment extends Fragment {
     private TextView messageTextView;
     private EditText inputEditText;
     private Button submitButton;
+    private TextView queryResultTextView;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -53,6 +54,7 @@ public class MainFragment extends Fragment {
         messageTextView = view.findViewById(R.id.message_text_view);
         inputEditText = view.findViewById(R.id.input_organisation);
         submitButton = view.findViewById(R.id.submit_button);
+        queryResultTextView = view.findViewById(R.id.query_result_text_view);
 
         // Observe the LiveData from ViewModel
         mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
@@ -68,7 +70,7 @@ public class MainFragment extends Fragment {
                 String userInput = inputEditText.getText().toString();
 
                 // Process the input (e.g., display it in the messageTextView)
-                messageTextView.setText("You entered: " + userInput);
+                queryResultTextView.setText("You entered: " + userInput);
 
                 // Clear the EditText (optional)
                 inputEditText.setText("");

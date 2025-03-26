@@ -61,6 +61,18 @@
             android:layout_margin="16dp"
             android:text="@string/lookup_on_scaladex" />
 
+        <!-- Styled TextView for Query Results -->
+        <TextView
+            android:id="@+id/query_result_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F0F0F0"
+            android:padding="16dp"
+            android:text="Query Result Will Appear Here"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

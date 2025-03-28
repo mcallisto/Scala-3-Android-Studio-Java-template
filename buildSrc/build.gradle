@@ -1,0 +1,23 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+gradlePlugin {
+    plugins {
+        helloWorldPlugin {
+            id = 'com.example.hello-world'
+            implementationClass = 'com.example.gradle.HelloWorldPlugin'
+        }
+    }
+} 

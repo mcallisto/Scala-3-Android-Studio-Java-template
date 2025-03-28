@@ -1,4 +1,5 @@
 plugins {
+    id 'com.example.hello-world'
     alias(libs.plugins.android.application)
 }
 

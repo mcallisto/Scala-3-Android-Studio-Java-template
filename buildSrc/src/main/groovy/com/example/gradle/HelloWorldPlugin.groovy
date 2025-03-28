@@ -5,6 +5,8 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.scala.ScalaCompile
 import org.gradle.api.file.FileCollection
 import org.gradle.api.logging.LogLevel
+import org.gradle.api.execution.TaskExecutionListener
+import org.gradle.api.tasks.TaskState
 
 class HelloWorldPlugin implements Plugin<Project> {
     void apply(Project project) {
@@ -98,15 +100,15 @@ class HelloWorldPlugin implements Plugin<Project> {
             }
             
             // Ensure our task is visible in the standard build logs
-            project.gradle.addListener(new org.gradle.api.execution.TaskExecutionListener() {
-                void beforeExecute(org.gradle.api.tasks.TaskState state) {
-                    if (state.name == 'compileAppScala') {
+            project.gradle.addListener(new TaskExecutionListener() {
+                void beforeExecute(org.gradle.api.Task task) {
+                    if (task.name == 'compileAppScala') {
                         project.logger.lifecycle("Starting compileAppScala task...")
                     }
                 }
                 
-                void afterExecute(org.gradle.api.tasks.TaskState state, def result) {
-                    if (state.name == 'compileAppScala') {
+                void afterExecute(org.gradle.api.Task task, TaskState state) {
+                    if (task.name == 'compileAppScala') {
                         project.logger.lifecycle("Finished compileAppScala task.")
                     }
                 }

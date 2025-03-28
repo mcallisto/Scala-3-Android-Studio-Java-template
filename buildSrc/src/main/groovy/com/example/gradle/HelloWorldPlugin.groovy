@@ -79,7 +79,11 @@ class HelloWorldPlugin implements Plugin<Project> {
                 scalaCompileOptions.with {
                     encoding = 'UTF-8'
                     additionalParameters = ['-feature']
-                    fork = true
+                    // Don't set fork directly as it's not available in some Gradle versions
+                    forkOptions.with {
+                        memoryInitialSize = '512m'
+                        memoryMaximumSize = '1g'
+                    }
                 }
                 
                 doFirst {

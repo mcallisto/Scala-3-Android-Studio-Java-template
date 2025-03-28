@@ -2,6 +2,18 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+class SamplePlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.tasks.register("ScriptPlugin") {
+            doLast {
+                println("Hello world from the build file!")
+            }
+        }
+    }
+}
+
+apply plugin: SamplePlugin
+
 android {
     namespace 'com.example.scala_3_android_java'
     compileSdk 35

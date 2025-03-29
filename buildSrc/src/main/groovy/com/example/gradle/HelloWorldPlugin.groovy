@@ -69,7 +69,8 @@ class HelloWorldPlugin implements Plugin<Project> {
                     // Use a resolvable classpath for Android
                     classpath = project.files(
                         project.android.bootClasspath,
-                        project.android.getVariantData("debug").variantDependencies.compileClasspath
+                        // Use runtimeClasspath from configurations which is resolvable
+                        project.configurations.findByName('debugRuntimeClasspath')
                     )
                     
                     // Set the destination directory for compiled classes

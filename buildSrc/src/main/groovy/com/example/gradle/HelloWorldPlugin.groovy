@@ -66,10 +66,10 @@ class HelloWorldPlugin implements Plugin<Project> {
                 // Set classpath using Android configurations
                 project.afterEvaluate {
                     // We need to wait for the Android plugin to configure the project
-                    // Use compileClasspath which can be resolved unlike implementation
+                    // Use a resolvable classpath for Android
                     classpath = project.files(
                         project.android.bootClasspath,
-                        project.configurations.compileClasspath
+                        project.android.getVariantData("debug").variantDependencies.compileClasspath
                     )
                     
                     // Set the destination directory for compiled classes

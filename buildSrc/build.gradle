@@ -1,23 +1,74 @@
 plugins {
     id 'groovy'
     id 'java-gradle-plugin'
+    id 'maven-publish'
 }
 
 repositories {
     mavenCentral()
     gradlePluginPortal()
+    google()
+    maven {
+        url "https://repo1.maven.org/maven2/"
+    }
 }
 
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
+    
+    // Add Android Gradle Plugin dependency
+    implementation 'com.android.tools.build:gradle:8.1.0'
+    
+    // Add Scala 3 compiler and libraries for the plugin to use
+    implementation 'org.scala-lang:scala3-compiler_3:3.3.1'
+    implementation 'org.scala-lang:scala3-library_3:3.3.1'
+    implementation 'org.scala-lang:scala-library:2.13.10'
+    implementation 'org.scala-lang:scala3-interfaces:3.3.1'
+    implementation 'org.scala-lang:tasty-core_3:3.3.1'
+    implementation 'org.scala-lang:scala3-staging_3:3.3.1'
 }
+
+// Download Scala compiler dependencies to lib folder
+task downloadScalaCompilerJars {
+    doLast {
+        def depConfig = configurations.runtimeClasspath
+        
+        def scalaJars = [
+            'scala3-compiler_3-3.3.1.jar', 
+            'scala3-library_3-3.3.1.jar',
+            'scala-library-2.13.10.jar',
+            'scala3-interfaces-3.3.1.jar',
+            'tasty-core_3-3.3.1.jar', 
+            'scala3-staging_3-3.3.1.jar'
+        ]
+        
+        mkdir("${project.projectDir}/lib")
+        
+        depConfig.files.each { jarFile ->
+            def fileName = jarFile.name
+            if (scalaJars.contains(fileName)) {
+                copy {
+                    from jarFile
+                    into "${project.projectDir}/lib"
+                }
+                println "Copied ${jarFile} to ${project.projectDir}/lib"
+            }
+        }
+    }
+}
+
+compileGroovy.dependsOn downloadScalaCompilerJars
 
 gradlePlugin {
     plugins {
         helloWorldPlugin {
             id = 'com.example.hello-world'
             implementationClass = 'com.example.gradle.HelloWorldPlugin'
+        }
+        scalaAndroidPlugin {
+            id = 'com.example.scala-android'
+            implementationClass = 'com.example.gradle.ScalaAndroidPlugin'
         }
     }
 } 

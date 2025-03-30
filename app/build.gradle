@@ -1,42 +1,108 @@
 plugins {
     id 'com.example.hello-world'
-    alias(libs.plugins.android.application)
+    id 'com.example.scala-android'
+    id 'com.android.application'
 }
 
 android {
     namespace 'com.example.scala_3_android_java'
-    compileSdk 35
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.scala_3_android_java"
         minSdk 33
-        targetSdk 35
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Enable multidex
+        multiDexEnabled true
     }
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Add this for debug builds to keep Scala classes
+            proguardFile 'proguard-scala.pro'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Keep Scala classes in release build too
+            proguardFile 'proguard-scala.pro'
         }
     }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    
+    // Add packaging options to handle duplicate files
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/MANIFEST.MF', 'META-INF/LICENSE', 'META-INF/NOTICE', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA']
+            pickFirsts += ['META-INF/LICENSE.txt', 'META-INF/NOTICE.txt']
+        }
+    }
+    
+    // Enable full mode for R8
+    buildFeatures {
+        buildConfig true
+    }
+    
+    // Resolve Kotlin dependency conflicts
+    configurations.all {
+        resolutionStrategy {
+            // Force a specific version of Kotlin stdlib
+            force "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+            force "org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10"
+            
+            // Exclude older versions of Kotlin JDK extensions
+            exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+            exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+        }
+    }
 }
 
-dependencies {
+// Set the JDK compatibility for toolchains to fix JDK 23 issues
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
+// Create a special folder for Scala sources if it doesn't exist
+task createScalaSourceDir {
+    def scalaDir = file("src/main/scala/com/example/scala_3_android_java")
+    if (!scalaDir.exists()) {
+        scalaDir.mkdirs()
+    }
+}
+
+// Ensure the Scala source directory is created during project setup
+preBuild.dependsOn createScalaSourceDir
+
+dependencies {
     implementation project(":core")
-    implementation libs.scala3.library.x
+    
+    // Scala 3 dependencies - use compileOnly instead of implementation to avoid dexing issues
+    compileOnly libs.scala3.library.x
+    
+    // Add compatibility for Java 8 features - use compileOnly to avoid dexing
+    compileOnly 'org.scala-lang.modules:scala-java8-compat_3:1.0.0'
+    
+    // Add multidex support
+    implementation 'androidx.multidex:multidex:2.0.1'
+    
+    // Android dependencies
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout

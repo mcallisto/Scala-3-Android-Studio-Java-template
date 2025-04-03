@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.core.Description;
 import com.example.core.Foo;
 import com.example.scala_3_android_java.R;
+import com.example.scala_3_android_java.Bar;
 
 import scala.jdk.javaapi.OptionConverters;
 import scala.util.Either;
@@ -62,17 +63,19 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Find view references
-//        messageTextView = view.findViewById(R.id.message_text_view);
+        messageTextView = view.findViewById(R.id.message_text_view);
         inputOrgText = view.findViewById(R.id.input_organisation);
         inputRepoText = view.findViewById(R.id.input_repository);
         submitButton = view.findViewById(R.id.submit_button);
         queryResultTextView = view.findViewById(R.id.query_result_text_view);
 
         // Observe the LiveData from ViewModel
-//        mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
-//            // Update the UI when data changes
-//            messageTextView.setText(message + " " + Foo.bar() + " " + OptionConverters.toJava(Foo.option()).get());
-//        });
+        mViewModel.getMessage().observe(getViewLifecycleOwner(), message -> {
+            // Update the UI when data changes
+            messageTextView.setText("\n" + message
+                    + "\nwith Scala code from core module: " + Foo.bar() + " " + OptionConverters.toJava(Foo.option()).get()
+                    + "\nwith Scala code from app module: " + Bar.foo());
+        });
 
         // Set up the button click listener
         submitButton.setOnClickListener(new View.OnClickListener() {

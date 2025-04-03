@@ -8,6 +8,7 @@ material = "1.12.0"
 constraintlayout = "2.2.1"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
+scalaAndroidPlugin = "24.0606.2018"
 scala3Library_x = "3.7.0-RC1"
 
 [libraries]
@@ -19,6 +20,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+scala-android-plugin = { module = "com.soundcorset:scala-android-plugin", version.ref = "scalaAndroidPlugin" }
 scala3-library_x = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3Library_x" }
 
 [plugins]

@@ -1,7 +1,11 @@
 plugins {
-    id 'com.example.hello-world'
+//    id 'com.example.hello-world'
+//    id 'com.example.scala-compile'
     alias(libs.plugins.android.application)
+    id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
+
+plugins.apply("com.soundcorset.scala-android")
 
 android {
     namespace 'com.example.scala_3_android_java'

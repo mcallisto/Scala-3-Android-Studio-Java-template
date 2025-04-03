@@ -9,7 +9,7 @@ public class MainViewModel extends ViewModel {
 
     public MainViewModel() {
         // Initialize with Hello World message
-        message.setValue("Hello, world!");
+        message.setValue("Hello, Scala 3 Android!");
     }
 
     // Getter for the LiveData

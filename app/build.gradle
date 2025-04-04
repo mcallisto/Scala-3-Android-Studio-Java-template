@@ -1,6 +1,4 @@
 plugins {
-//    id 'com.example.hello-world'
-//    id 'com.example.scala-compile'
     alias(libs.plugins.android.application)
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }

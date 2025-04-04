@@ -8,12 +8,14 @@ Helping the adoption of Scala in Android Studio.
 
 This is the Java project you get if:
 
-1. in **Android Studio** _Android Studio Meerkat | 2024.3.1 Patch 1_ you create a module with the Fragment + ViewModel template.
+1. in **Android Studio** _Meerkat | 2024.3.1 Patch 1_ you create a module with the Fragment + ViewModel template.
 
 2. you then add a minimal Scala 3.7.0-RC1 module named `core` and call it from the `app` module
 
 3. you use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
    and display the results. Credits and big thanks for this to [@keynmol](https://github.com/keynmol)
+
+4. you place additional Scala code directly in the `app` module
 
 ## Notes
 

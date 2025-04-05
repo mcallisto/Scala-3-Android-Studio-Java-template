@@ -1,12 +1,12 @@
-# Android Studio Java project with a Scala 3 module
+# Android Studio Java project translated to Scala 3
 
-A template project in Java for the latest **Android Studio** with an added **Scala 3** module.
+A template project in Java for the latest **Android Studio** translated to **Scala 3**.
 
 ## Aim
 
 Helping the adoption of Scala in Android Studio.
 
-This is the Java project you get if:
+This is the Scala project you get if:
 
 1. in **Android Studio** _Meerkat | 2024.3.1 Patch 1_ you create a module with the Fragment + ViewModel template.
 
@@ -15,7 +15,7 @@ This is the Java project you get if:
 3. you use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
    and display the results. Credits and big thanks for this to [@keynmol](https://github.com/keynmol)
 
-4. you place additional Scala code directly in the `app` module
+4. you translate to Scala the activity, fragment and model Java code in the `app` module
 
 ## Notes
 

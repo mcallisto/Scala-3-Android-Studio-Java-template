@@ -8,4 +8,8 @@ class MainActivity extends AppCompatActivity:
   override protected def onCreate(savedInstanceState: Bundle): Unit =
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    if (savedInstanceState == null) getSupportFragmentManager.beginTransaction.replace(R.id.container, MainFragment.newInstance).commitNow()
+    if savedInstanceState == null then
+      getSupportFragmentManager
+        .beginTransaction
+        .replace(R.id.container, MainFragment.newInstance)
+        .commitNow()

@@ -1,3 +1,4 @@
+![build_ci](https://github.com/mcallisto/Scala-3-Android-Studio-Java-template/actions/workflows/build_ci.yml/badge.svg)
 # Android Studio Java project translated to Scala 3
 
 A template project in Java for the latest **Android Studio** translated to **Scala 3**.

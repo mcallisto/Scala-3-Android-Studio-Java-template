@@ -12,24 +12,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.core.Description
 import com.example.core.Foo
 import com.example.scala_3_android_java.R
-import com.example.scala_3_android_java.Bar
-import scala.jdk.javaapi.OptionConverters
-import scala.util.Either
 import scala.util.Left
 import scala.util.Right
-import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
 
 object MainFragment:
   def newInstance = new MainFragment
 
 class MainFragment extends Fragment:
   private var mViewModel: MainViewModel = null
-  private var messageTextView: TextView = null
+//  private var messageTextView: TextView = null
   private var inputOrgText: EditText = null
   private var inputRepoText: EditText = null
   private var submitButton: Button = null
@@ -49,16 +43,16 @@ class MainFragment extends Fragment:
   override def onViewCreated(@NonNull view: View, @Nullable savedInstanceState: Bundle): Unit =
     super.onViewCreated(view, savedInstanceState)
     // Find view references
-    messageTextView = view.findViewById(R.id.message_text_view)
+//    messageTextView = view.findViewById(R.id.message_text_view)
     inputOrgText = view.findViewById(R.id.input_organisation)
     inputRepoText = view.findViewById(R.id.input_repository)
     submitButton = view.findViewById(R.id.submit_button)
     queryResultTextView = view.findViewById(R.id.query_result_text_view)
-    // Observe the LiveData from ViewModel
-    mViewModel.getMessage.observe(getViewLifecycleOwner, (message: String) =>
-      // Update the UI when data changes
-      messageTextView.setText("\n" + message + "\nwith Scala code from core module: " + Foo.bar + " " + OptionConverters.toJava(Foo.option).get + "\nwith Scala code from app module: " + Bar.foo)
-    )
+//    // Observe the LiveData from ViewModel
+//    mViewModel.getMessage.observe(getViewLifecycleOwner, (message: String) =>
+//      // Update the UI when data changes
+//      messageTextView.setText("\n" + message)
+//    )
     // Set up the button click listener
     submitButton.setOnClickListener(new View.OnClickListener() {
       override def onClick(v: View): Unit =
@@ -70,18 +64,13 @@ class MainFragment extends Fragment:
           val result = Foo.getProjectInfo(org, repo)
           // Update UI on the main thread
           getActivity.runOnUiThread(() =>
-            if (result.isRight) then
-              // Success: Update TextView with the result
-              val right = result.asInstanceOf[Right[String, Description]]
-              val projectInfo = right.value
-              queryResultTextView.setText(projectInfo.description + ", stars: " + projectInfo.stars)
-            else
-              // Failure: Update TextView with the error message
-              val left = result.asInstanceOf[Left[String, Description]]
-              val error = left.value
-              queryResultTextView.setText("")
-              // Optionally, you can show a Toast with the error
-              Toast.makeText(getContext, "An error occurred: " + error, Toast.LENGTH_LONG).show()
+            result match
+              case Left(error) =>
+                queryResultTextView.setText("")
+                // Optionally, you can show a Toast with the error
+                Toast.makeText(getContext, s"An error occurred: $error", Toast.LENGTH_LONG).show()
+              case Right(projectInfo) =>
+                queryResultTextView.setText(s"${projectInfo.description}, stars: ${projectInfo.stars}")
           )
         )
         // Here you can send your user input to the ViewModel to update the data

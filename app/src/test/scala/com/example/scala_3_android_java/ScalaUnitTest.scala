@@ -8,10 +8,10 @@ import org.junit.Assert._
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class PippoUnitTest {
+class ScalaUnitTest {
+  val x: Pippo = 2
   @Test
   def addition_isCorrect(): Unit = {
     assertEquals(5, 2 + 2)
   }
 }
-

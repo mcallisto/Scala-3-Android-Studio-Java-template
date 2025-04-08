@@ -51,7 +51,12 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.lifecycle.livedata.ktx
     implementation libs.lifecycle.viewmodel.ktx
+    testImplementation 'org.scalatest:scalatest_3:3.2.19'
+    testImplementation 'junit:junit:4.13.1'
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+//    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.0" // or latest version
+//    testImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0" // or latest version
+//    testImplementation "org.jetbrains.kotlin:kotlin-reflect:2.1.0"
 }

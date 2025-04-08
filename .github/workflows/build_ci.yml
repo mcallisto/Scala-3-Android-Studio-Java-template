@@ -31,7 +31,7 @@ jobs:
         run: ./gradlew build --no-daemon
 
       - name: Test
-        run: ./gradlew test
+        run: ./gradlew app:test
 
 #      # Step commented out, but working if needed
 #      - name: Upload APK

@@ -9,7 +9,7 @@ constraintlayout = "2.2.1"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 scalaAndroidPlugin = "24.1019.1546"
-scala3Library_x = "3.7.0-RC1"
+scala3Library_x = "3.7.0-RC2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }

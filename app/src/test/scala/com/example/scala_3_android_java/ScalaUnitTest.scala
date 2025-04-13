@@ -1,7 +1,10 @@
 package com.example.scala_3_android_java
 
+import com.example.core.Foo
 import org.junit.Test
-import org.junit.Assert._
+import org.junit.Assert.*
+
+import scala.jdk.javaapi.OptionConverters
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -9,9 +12,18 @@ import org.junit.Assert._
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ScalaUnitTest {
-  whatever // this cannot be compiled
+
   @Test
   def addition_isCorrect(): Unit = {
-    assertEquals(5, 2 + 2)
+    assertEquals(4, 2 + 2)
   }
+
+  @Test def integer_fromScalaCore(): Unit = {
+    assertEquals(42, Foo.bar)
+  }
+
+  @Test def converted_option_fromScalaCore(): Unit = {
+    assertEquals(42, OptionConverters.toJava(Foo.option).get)
+  }
+
 }

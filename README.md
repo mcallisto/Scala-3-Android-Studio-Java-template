@@ -20,7 +20,7 @@ This is the Scala project you get if:
 
 ## Notes
 
-### Why Scala 3.7.0-RC2?
+### Why Scala 3.7.0?
 
 Because is the first Scala version shipping https://github.com/scala/scala3/pull/22632.
 The emitted Scala code is more compatible with Android ART.

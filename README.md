@@ -3,6 +3,14 @@
 
 A template project in Java for the latest **Android Studio** translated to **Scala 3**.
 
+### What about a Kotlin template with a Scala 3 module?
+
+Android Studio is currently quite opinionated towards Kotlin,
+so this Java module is not an option you get in the `New` > `New Project…` menu.
+
+If you want to use Scala 3 starting from the standard Kotlin template,
+please check https://github.com/mcallisto/Scala-3-Android-Studio-template.
+
 ## Aim
 
 Helping the adoption of Scala in Android Studio.
@@ -28,11 +36,3 @@ The emitted Scala code is more compatible with Android ART.
 Since currently all Scala libraries are not yet published to Maven Central with this version,
 the workaround is to let Android R8 minify the code,
 so `minifyEnabled true` must be set even for `debug` builds.
-
-### What about a Kotlin template?
-
-Android Studio is currently quite opinionated towards Kotlin,
-so this Java module is not an option you get in the `New` > `New Project…` menu.
-
-If you want the same project starting from the standard Kotlin template,
-please check https://github.com/mcallisto/Scala-3-Android-Studio-template.

@@ -21,3 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -dontwarn java.net.http.HttpTimeoutException
+
+# Added for instrumented test with minifyEnable true
+# see https://stackoverflow.com/questions/63497777/cant-run-android-instrumented-ui-tests-with-minifyenabled
+-keep public class kotlin.**

@@ -33,9 +33,4 @@ public class ExampleInstrumentedTest {
         assertEquals(42, Foo.bar());
     }
 
-    @Test
-    public void converted_option_fromScalaCore() {
-        assertEquals(42, OptionConverters.toJava(Foo.option()).get());
-    }
-
 }

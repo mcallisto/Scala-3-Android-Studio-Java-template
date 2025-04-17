@@ -2,8 +2,6 @@ package com.example.scala_3_android_java.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,33 +12,32 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.core.Foo
 import com.example.scala_3_android_java.R
-import scala.util.Left
-import scala.util.Right
+import scala.util.{Left, Right}
 import java.util.concurrent.Executors
 
 object MainFragment:
-  def newInstance = new MainFragment
+  def newInstance = MainFragment()
 
 class MainFragment extends Fragment:
-  private var mViewModel: MainViewModel = null
-//  private var messageTextView: TextView = null
-  private var inputOrgText: EditText = null
-  private var inputRepoText: EditText = null
-  private var submitButton: Button = null
-  private var queryResultTextView: TextView = null
-  final private val executor = Executors.newSingleThreadExecutor
+  private var mViewModel: MainViewModel = _
+//  private var messageTextView: TextView = _
+  private var inputOrgText: EditText = _
+  private var inputRepoText: EditText = _
+  private var submitButton: Button = _
+  private var queryResultTextView: TextView = _
+  private val executor = Executors.newSingleThreadExecutor()
 
-  override def onCreate(@Nullable savedInstanceState: Bundle): Unit =
+  override def onCreate(savedInstanceState: Bundle): Unit =
     super.onCreate(savedInstanceState)
-    mViewModel = new ViewModelProvider(this).get(classOf[MainViewModel])
+    mViewModel = ViewModelProvider(this).get(classOf[MainViewModel])
     // TODO: Use the ViewModel
 
-  @Nullable override def onCreateView(@NonNull inflater: LayoutInflater,
-                                      @Nullable container: ViewGroup,
-                                      @Nullable savedInstanceState: Bundle): View =
+  override def onCreateView(inflater: LayoutInflater,
+                            container: ViewGroup,
+                            savedInstanceState: Bundle): View =
     inflater.inflate(R.layout.fragment_main, container, false)
 
-  override def onViewCreated(@NonNull view: View, @Nullable savedInstanceState: Bundle): Unit =
+  override def onViewCreated(view: View, savedInstanceState: Bundle): Unit =
     super.onViewCreated(view, savedInstanceState)
     // Find view references
 //    messageTextView = view.findViewById(R.id.message_text_view)

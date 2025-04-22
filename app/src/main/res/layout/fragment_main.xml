@@ -11,68 +11,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/input_organisation_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Organisation" />
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Organisation"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/input_organisation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/enter_your_text_here"
             android:text="indoorvivants"
-            android:inputType="text" />
+            android:inputType="text"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/input_repository_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Repository" />
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Repository"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/input_repository"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/enter_your_text_here"
             android:text="sn-bindgen"
-            android:inputType="text" />
+            android:inputType="text"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/submit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/lookup_on_scaladex" />
 
-        <!-- Styled TextView for Query Results -->
-        <TextView
-            android:id="@+id/query_result_text_view"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F0F0F0"
-            android:padding="16dp"
-            android:text="Query Result Will Appear Here"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-<!--        <TextView-->
-<!--            android:id="@+id/message_text_view"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/query_result_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F0F0F0"
+                android:padding="16dp"
+                android:text="Enter organization and repository to search"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:minHeight="150dp" />
+        </FrameLayout>
 
     </LinearLayout>
 

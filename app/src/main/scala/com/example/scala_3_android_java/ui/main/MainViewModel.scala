@@ -33,14 +33,13 @@ class MainViewModel extends ViewModel:
   // Method to fetch project information
   def fetchProjectInfo(org: String, repo: String): Unit =
     projectInfoState.setValue(Loading)
-    executor.execute(() => {
-      val result = Foo.getProjectInfo(org, repo)
-      result match
-        case Left(error) => 
-          projectInfoState.postValue(Error(error))
-        case Right(projectInfo) => 
-          projectInfoState.postValue(Success(projectInfo))
-    })
+    executor.execute(() =>
+      val state =
+        Foo.getProjectInfo(org, repo) match
+          case Left(error)        => Error(error)
+          case Right(projectInfo) => Success(projectInfo)
+      projectInfoState.postValue(state)
+    )
 
   override def onCleared(): Unit =
     super.onCleared()

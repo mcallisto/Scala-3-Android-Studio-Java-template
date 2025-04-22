@@ -13,17 +13,18 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.scala_3_android_java.R
 import androidx.lifecycle.Observer
+import scala.compiletime.uninitialized
 
 object MainFragment:
   def newInstance = MainFragment()
 
 class MainFragment extends Fragment:
-  private var viewModel: MainViewModel = _
-  private var inputOrgText: EditText = _
-  private var inputRepoText: EditText = _
-  private var submitButton: Button = _
-  private var queryResultTextView: TextView = _
-  private var progressBar: ProgressBar = _
+  private var viewModel: MainViewModel = uninitialized
+  private var inputOrgText: EditText = uninitialized
+  private var inputRepoText: EditText = uninitialized
+  private var submitButton: Button = uninitialized
+  private var queryResultTextView: TextView = uninitialized
+  private var progressBar: ProgressBar = uninitialized
 
   override def onCreate(savedInstanceState: Bundle): Unit =
     super.onCreate(savedInstanceState)
@@ -73,7 +74,7 @@ class MainFragment extends Fragment:
              |Project: ${inputOrgText.getText}/${inputRepoText.getText}
              |Description: ${projectInfo.description}
              |Stars: ${projectInfo.stars}
-             |${if (projectInfo.topic.nonEmpty) s"Topics: ${projectInfo.topic.mkString(", ")}" else ""}
+             |${if projectInfo.topic.isEmpty then "" else s"Topics: ${projectInfo.topic.mkString(", ")}"}
                 """.stripMargin)
     })
 
@@ -85,11 +86,9 @@ class MainFragment extends Fragment:
         val repo = inputRepoText.getText.toString.trim
 
         // Validate input
-        if (org.isEmpty || repo.isEmpty) {
+        if org.isEmpty || repo.isEmpty then
           Toast.makeText(getContext, "Please enter both organization and repository", Toast.LENGTH_SHORT).show()
-          return
-        }
-
-        // Use the ViewModel to fetch project info
-        viewModel.fetchProjectInfo(org, repo)
+        else
+          // Use the ViewModel to fetch project info
+          viewModel.fetchProjectInfo(org, repo)
     })

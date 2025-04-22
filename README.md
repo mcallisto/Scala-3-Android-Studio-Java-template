@@ -3,7 +3,7 @@
 
 A template project in Java for the latest **Android Studio** translated to **Scala 3**.
 
-### What about a Kotlin template with a Scala 3 module?
+### What about a Kotlin template instead, with a Scala 3 module?
 
 Android Studio is currently quite opinionated towards Kotlin,
 so this Java module is not an option you get in the `New` > `New Project…` menu.
@@ -17,7 +17,7 @@ Helping the adoption of Scala in Android Studio.
 
 This is the Scala project you get if:
 
-1. in **Android Studio** _Meerkat | 2024.3.1 Patch 1_ you create a module with the Fragment + ViewModel template.
+1. in **Android Studio** _Meerkat | 2024.3.1 Patch 2_ you create a module with the Fragment + ViewModel template.
 
 2. you then add a minimal Scala 3.7.0-RC2 module named `core` and call it from the `app` module
 

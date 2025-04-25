@@ -36,3 +36,15 @@ The emitted Scala code is more compatible with Android ART.
 Since currently all Scala libraries are not yet published to Maven Central with this version,
 the workaround is to let Android R8 minify the code,
 so `minifyEnabled true` must be set even for `debug` builds.
+
+### Building Scala with Gradle
+
+In this project two different solutions coexist:
+
+1. The `app` module is built using the [scala-android-plugin](https://github.com/onsqcorp/scala-android-plugin),
+which is brilliantly designed to work with the official
+[Android Gradle Plugin (AGP)](https://mvnrepository.com/artifact/com.android.tools.build/gradle/8.9.2).
+
+2. The separate `core` module is built with the official Gradle
+[Scala Plugin](https://docs.gradle.org/current/userguide/scala_plugin.html),
+which is not compatible with AGP.

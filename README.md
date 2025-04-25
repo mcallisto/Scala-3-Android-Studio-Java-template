@@ -9,7 +9,7 @@ Android Studio is currently quite opinionated towards Kotlin,
 so a Java module is not an option you get in the `New` > `New Project…` menu.
 
 If you want to use Scala 3 together with Kotlin, starting from the standard Kotlin template,
-please check https://github.com/mcallisto/Scala-3-Android-Studio-template.
+please check https://github.com/mcallisto/Scala-3-Android-Studio-Kotlin-template.
 
 ## Aim
 

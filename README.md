@@ -19,7 +19,7 @@ This is the Scala project you get if:
 
 1. in **Android Studio** _Meerkat Feature Drop | 2024.3.2_ you create an `app` module with the Fragment + ViewModel template.
 
-2. you then add a minimal Scala 3.7.0-RC4 module named `core` and call it from the `app` module
+2. you then add a minimal Scala 3.7.0 module named `core` and call it from the `app` module
 
 3. you use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
    and display the results. Credits and big thanks for this to [@keynmol](https://github.com/keynmol)

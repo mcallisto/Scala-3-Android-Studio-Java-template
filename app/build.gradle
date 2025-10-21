@@ -7,12 +7,12 @@ plugins.apply("com.soundcorset.scala-android")
 
 android {
     namespace 'com.example.scala_3_android_java'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.example.scala_3_android_java"
         minSdk 33
-        targetSdk 35
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 

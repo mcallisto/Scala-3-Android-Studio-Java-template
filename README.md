@@ -19,18 +19,19 @@ This is the Scala project you get if:
 
 1. in **Android Studio** _Narwhal 4 Feature Drop | 2025.4.1_ you create an `app` module with the Fragment + ViewModel template.
 
-2. you then add a minimal Scala 3.7.0 module named `core` and call it from the `app` module
+2. then add a minimal Scala 3.3.7 module named `core` and call it from the `app` module
 
-3. you use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
+3. use [STTP](https://github.com/softwaremill/sttp) to query [ScalaDex](https://index.scala-lang.org/)
    and display the results. Credits and big thanks for this to [@keynmol](https://github.com/keynmol)
 
-4. you translate to Scala the activity, fragment and model Java code in the `app` module
+4. translate to Scala the activity, fragment and model Java code in the `app` module
 
 ## Notes
 
-### Why Scala 3.7.0?
+### Why Scala 3.3.7 LTS?
 
-Because is the first Scala version shipping https://github.com/scala/scala3/pull/22632.
+Because is the first LTS Scala version shipping https://github.com/scala/scala3/pull/22632,
+backported from the 3.7.x lineage.
 The emitted Scala code is more compatible with Android ART.
 
 Since currently all Scala libraries are not yet published to Maven Central with this version,

@@ -4,9 +4,9 @@ plugins {
 
 dependencies {
     implementation libs.scala3.library.x
-    implementation 'com.softwaremill.sttp.client4:okhttp-backend_3:4.0.12'
-    implementation 'com.softwaremill.sttp.client4:upickle_3:4.0.12'
-    implementation 'com.lihaoyi:upickle_3:4.4.0'
+    implementation 'com.softwaremill.sttp.client4:okhttp-backend_3:4.0.13'
+    implementation 'com.softwaremill.sttp.client4:upickle_3:4.0.13'
+    implementation 'com.lihaoyi:upickle_3:4.4.1'
     testImplementation 'org.scalatest:scalatest_3:3.2.19'
     testImplementation 'junit:junit:4.13.2'
 }

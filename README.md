@@ -17,7 +17,7 @@ Helping the adoption of Scala in Android Studio.
 
 This is the Scala project you get if:
 
-1. in **Android Studio** _Narwhal 4 Feature Drop | 2025.4.1_ you create an `app` module with the Fragment + ViewModel template.
+1. in **Android Studio** _Otter | 2025.2.1_ you create an `app` module with the Fragment + ViewModel template.
 
 2. then add a minimal Scala 3.3.7 module named `core` and call it from the `app` module
 
